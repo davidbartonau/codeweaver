@@ -9,4 +9,7 @@ output/Opportunity2.java    : In this case I added the POSTCLOSE:MasterTransform
                               It should then rewrite output/Opportunity2.java based on input/Opportunity.java EXCEPT it should keep my modification of POSTCLOSE:MasterTransformAdd content
                               The POSTCLOSE:MasterTransformAdd should then have the json copied from the POSTCLOSE and the sha1 set to override
 output/Opportunity3.java    : I now take Opportunity2.java and modify it, adding PREOPEN:CLASS and POSTOPEN:MasterTransformAdd
-
+                              In the same way as the previous one, my new nodes are preserved (as well as the POSTCLOSE:MasterTransformAdd from the previous stage)
+output/Opportunity4.java    : In this final version, we override the content inside OPEN:preCommit
+                              The program should recognise this and keep the customised content while rewriting the file.
+                              All previous changes are also included.

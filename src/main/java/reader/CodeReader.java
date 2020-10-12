@@ -29,8 +29,8 @@ public class CodeReader {
         return rows;
     }
 
-    public Map<Integer, Tags> findTagsIndex(List<String> rows){
-        Map<Integer, Tags> map = new LinkedHashMap<>();
+    public Map<Integer, String> findTagsIndex(List<String> rows){
+        Map<Integer, String> map = new LinkedHashMap<>();
         List<Tags> tags = Arrays.asList(Tags.values());
 
         for(int i=0; i<rows.size(); i++){
@@ -38,7 +38,7 @@ public class CodeReader {
             if(row.trim().isEmpty()) continue;
             for(Tags tag: tags){
                 if(row.contains(tag.label)) {
-                    map.put(i, tag);
+                    map.put(i, (row.split("}")[0]).split("\\{")[1]);
                     break;
                 }
             }

@@ -26,9 +26,12 @@ public class Opportunity extends BaseOpportunity implements AutoEmailable, Trans
         // Do not add any code to this, always put it in initialiseNewObject
     }
 
+
+    /* {PREOPEN:validate} { a: 1, b: 2 } */
     @Override
     public void validate(ValidationContext context)
     {
+        /* {OPEN:validate} { a: 1, b: 2 } */
         super.validate(context);
 
         if (getLeadStatus() == null)
@@ -43,14 +46,20 @@ public class Opportunity extends BaseOpportunity implements AutoEmailable, Trans
                 throw new NestedException(ex);
             }
         }
+        /* {CLOSE:validate} { a: 1, b: 2 } */
     }
+    /* {POSTCLOSE:validate} { a: 1, b: 2 } */
 
 
+    /* {PREOPEN:preCommit} { a: 1, b: 2 } */
     @Override
     public void preCommit(boolean willBeStored) throws Exception
     {
+        /* {OPEN:preCommit} { a: 1, b: 2 } */
         super.preCommit(willBeStored); //To change body of generated methods, choose Tools | Templates.
+        /* {CLOSE:preCommit} { a: 1, b: 2 } */
     }
+    /* {POSTCLOSE:preCommit} { a: 1, b: 2 } */
 
 
     @Override
@@ -110,10 +119,12 @@ public class Opportunity extends BaseOpportunity implements AutoEmailable, Trans
     public void registerTransforms()
     {
         MasterTransform.create(TRANSFORM_TYPE_AUTO_MSG)
+                        /* {OPEN:MasterTransformAdd} { a: 1, b: 2 } */
                         .add("customer", FranchiseContact.class)
                         .add("opportunity", Opportunity.class)
                         .add("am", SecUser.class)
                         .add("amext", TTUserExtension.class)
+                        /* {CLOSE:MasterTransformAdd} { a: 1, b: 2 } */
                         .register();
     }
 /* {PRECLOSE:CLASS} { a: 1, b: 2 } */

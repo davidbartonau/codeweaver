@@ -8,6 +8,6 @@ public class CodeWeaver {
     public static void main(String[] args) {
         File file = new File("D:\\upwork\\codeweaver\\src\\main\\java\\Opportunity.txt");
         CodeReader reader = new CodeReader(file);
-        Map<Integer, Tags> map = reader.findTagsIndex(reader.getAllRowsAsList());
+        Map<Integer, String> map = reader.findTagsIndex(reader.getAllRowsAsList());
     }
 }

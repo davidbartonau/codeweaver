@@ -1,12 +1,12 @@
 package common;
 
 public enum Tags {
-    OPEN("{OPEN:CLASS}"),
-    PREOPEN("{PREOPEN:CLASS}"),
-    POSTOPEN("{POSTOPEN:CLASS}"),
-    CLOSE("{CLOSE:CLASS}"),
-    PRECLOSE("{PRECLOSE:CLASS}"),
-    POSTCLOSE("{POSTCLOSE:CLASS}");
+    OPEN("{OPEN"),
+    PREOPEN("{PREOPEN"),
+    POSTOPEN("{POSTOPEN"),
+    CLOSE("{CLOSE"),
+    PRECLOSE("{PRECLOSE"),
+    POSTCLOSE("{POSTCLOSE");
 
     public final String label;
 

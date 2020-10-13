@@ -105,7 +105,7 @@ public class CodeReader {
         String sha = null;
         if (i == j) {
             // Found on same line
-            String s = (row.split("\\*/")[1]).split("/*")[0];
+            String s = ((row.split("\\*/")[1]).split("\\{")[0]).replace("/*","");
             sha = Utility.calculateSha1OfRows(s);
         }
         else{

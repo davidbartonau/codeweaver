@@ -34,7 +34,7 @@ public class Opportunity extends BaseOpportunity implements AutoEmailable, Trans
         /* {OPEN:validate} { a: 1, b: 2 } */
         super.validate(context);
 
-        if (getLeadStatus() == null)
+        if (/* {OPEN:validateLeadStatusCondition} { a: 1, b: 2 } */getLeadStatus() == null/* {CLOSE:validateLeadStatusCondition} { a: 1, b: 2 } */)
         {
             ContactStatus status = getContactStatusFor(CONTACT_STATUS_NOT_SET);
             try

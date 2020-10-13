@@ -87,14 +87,19 @@ public class CodeReader {
     }
 
     private void processForOpenToPostOpen(List<String> list, int i){
+        boolean isPostOpen = false;
         String row = list.get(i);
         String id = (row.split("}")[0]).split(":")[1];
         int j=0;
         for(j=i;j<= list.size();j++){
-            if(list.get(j).contains(Tags.CLOSE.label+":"+id)) {
+            if(list.get(j).contains(Tags.CLOSE.label+":"+id+"}")) {
                 //Close found for the tag with same id
+                break;
             }
-            if(list.get(j).contains(Tags.POSTOPEN.label+":"+id)) break;
+            if(list.get(j).contains(Tags.POSTOPEN.label+":"+id)) {
+                isPostOpen = true;
+                break;
+            }
             else continue;
         }
         String sha = null;
@@ -112,7 +117,8 @@ public class CodeReader {
             builder.append(list.get(j).split("/*")[0]);
             sha = Utility.calculateSha1OfRows(builder.toString());
         }
-        list.remove(i);
-        list.add(i, Utility.insertSha(row, sha));
+        int x = isPostOpen ? j : i;
+        String removed = list.remove(x);
+        list.add(x, Utility.insertSha(removed, sha));
     }
 }
